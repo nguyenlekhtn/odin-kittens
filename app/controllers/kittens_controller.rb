@@ -25,7 +25,7 @@ class KittensController < ApplicationController
 
     if @kitten.save
       redirect_to kitten_url(@kitten),
-                  notice: "Kitten was successfully created."
+                  notice: "Kitten #{@kitten.name} was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class KittensController < ApplicationController
   def update
     if @kitten.update(kitten_params)
       redirect_to kitten_url(@kitten),
-                  notice: "Kitten was successfully updated."
+                  notice: "Kitten #{@kitten.name} was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,7 +45,8 @@ class KittensController < ApplicationController
   def destroy
     @kitten.destroy
 
-    redirect_to kittens_url, notice: "Kitten was successfully destroyed."
+    redirect_to kittens_url,
+                notice: "Kitten #{@kitten.name} was successfully destroyed."
   end
 
   private
