@@ -6,7 +6,8 @@
   <% @kittens.each do |kitten| %>
     <%= render kitten %>
     <p>
-      <%= link_to "Show this kitten", kitten %>
+      <%= link_to "Show this kitten", kitten %> |
+      <%= link_to "Delete this kitten", kitten, data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %>
     </p>
   <% end %>
 </div>
